@@ -82,6 +82,11 @@ class App extends React.Component {
   }
 ]
 	}
+
+	addOne = () => {
+		console.log('Hello')
+	}
+
 	render() {
 		return (
 			<div>
@@ -90,7 +95,7 @@ class App extends React.Component {
         <img src="/google.png" alt="google logo" className="googleLogo" />
       </div>
       <form action="/results" method="POST" className="searchBarandButton">
-        <input name="searchBar" type="searchbar" className="searchBar" />
+        <input name="searchBar" type="searchbar" className="searchBar" onChange= {e => this.addOne(e)}/>
         <button className="searchButton">Search</button>
       </form>
     </nav>
