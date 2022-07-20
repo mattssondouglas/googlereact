@@ -2,6 +2,7 @@ import React from 'react'
 
 class App extends React.Component {
 	state = {
+		searchTerms : '',
 		results: [
   {
     "title": "JavaScript Tutorial - W3Schools",
@@ -83,8 +84,19 @@ class App extends React.Component {
 ]
 	}
 
-	addOne = () => {
-		console.log('Hello')
+	filtArr = () => {
+		this.state.results.filter(result => {
+			return result.description = this.state.searchTerms
+		})
+	}
+
+	getResults = (e) => {
+		console.log('ww');
+		this.setState({
+			searchTerms: e.target.value
+		},
+		() => console.log(this.state.searchTerms)
+	)
 	}
 
 	render() {
@@ -95,7 +107,7 @@ class App extends React.Component {
         <img src="/google.png" alt="google logo" className="googleLogo" />
       </div>
       <form action="/results" method="POST" className="searchBarandButton">
-        <input name="searchBar" type="searchbar" className="searchBar" onChange= {e => this.addOne(e)}/>
+        <input name="searchBar" type="searchbar" className="searchBar" onChange= {e => this.getResults(e)} value={this.state.searchTerms}/>
         <button className="searchButton">Search</button>
       </form>
     </nav>
