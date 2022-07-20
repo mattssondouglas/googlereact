@@ -83,7 +83,9 @@ class App extends React.Component {
 ]
 	}
 	render() {
-		return this.state.results.map((result, i) => {
+		return (
+			<div>
+			{this.state.results.map((result, i) => {
 					return (
 						<div key={i}>
 							<span className="websiteAdress">{result.url}</span>
@@ -102,8 +104,8 @@ class App extends React.Component {
 							</ul>
 						</div>
 					)
-		})
-	}
+		})}
+	</div>)}
 }
 
 export default App
