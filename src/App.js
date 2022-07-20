@@ -85,6 +85,16 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
+			<nav className="navbar">
+      <div className="logo">
+        <img src="/google.png" alt="google logo" className="googleLogo" />
+      </div>
+      <form action="/results" method="POST" className="searchBarandButton">
+        <input name="searchBar" type="searchbar" className="searchBar" />
+        <button className="searchButton">Search</button>
+      </form>
+    </nav>
+		<span class="numResults">{this.state.results.length} Results</span>
 			{this.state.results.map((result, i) => {
 					return (
 						<div key={i}>
