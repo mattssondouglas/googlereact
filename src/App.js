@@ -84,13 +84,14 @@ class App extends React.Component {
 ]
 	}
 
-	filtArr = () => {
-		this.state.results.filter(result => {
-			return result.description = this.state.searchTerms
+	getSearchResults = () => {
+		let results = this.state.results.filter(result => {
+			return result.description == this.state.searchTerms
 		})
+		this.setState({results})
 	}
 
-	getResults = (e) => {
+	getSearchTerms = (e) => {
 		console.log('ww');
 		this.setState({
 			searchTerms: e.target.value
@@ -106,12 +107,12 @@ class App extends React.Component {
       <div className="logo">
         <img src="/google.png" alt="google logo" className="googleLogo" />
       </div>
-      <form action="/results" method="POST" className="searchBarandButton">
-        <input name="searchBar" type="searchbar" className="searchBar" onChange= {e => this.getResults(e)} value={this.state.searchTerms}/>
-        <button className="searchButton">Search</button>
+      <form className="searchBarandButton">
+        <input name="searchBar" type="searchbar" className="searchBar" onChange= {e => this.getSearchTerms(e)} value={this.state.searchTerms}/>
+        <button type='button' className="searchButton" onClick= {e => this.getSearchResults(e)}>Search</button>
       </form>
     </nav>
-		<span class="numResults">{this.state.results.length} Results</span>
+		<span className="numResults">{this.state.results.length} Results</span>
 			{this.state.results.map((result, i) => {
 					return (
 						<div key={i}>
