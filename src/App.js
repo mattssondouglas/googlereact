@@ -8,16 +8,8 @@ class App extends React.Component {
 		results: []
 	}
 
-	getSearchResults = () => {
-		let results = this.state.results.filter(result => {
-			return result.description == this.state.searchTerms
-		})
-		this.setState({results})
-	}
-
-	getSearchResults2 = async () => {
+	getSearchResults = async () => {
 		let response = await axios.get(`http://localhost:3000/results?search=${this.state.searchTerms}`)
-			console.log(response);
 		this.setState({
 			results : response.data
 		})
@@ -40,7 +32,7 @@ class App extends React.Component {
       </div>
       <form className="searchBarandButton">
         <input name="searchBar" type="searchbar" className="searchBar" onChange= {e => this.getSearchTerms(e)} value={this.state.searchTerms}/>
-        <button type='button' className="searchButton" onClick= {this.getSearchResults2}>Search</button>
+        <button type='button' className="searchButton" onClick= {this.getSearchResults}>Search</button>
       </form>
     </nav>
 		<span className="numResults">{this.state.results.length} Results</span>
